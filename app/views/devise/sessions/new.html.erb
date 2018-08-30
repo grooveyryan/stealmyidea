@@ -1,0 +1,16 @@
+
+      <div class="col-md-4 col-md-offset-4 other">
+        <div class="log-in panel exception">
+          <div class="panel-heading">
+            <h2>Log in</h2>
+          </div>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            <div class="panel-body">
+              <%= f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg' } %>
+              <%= f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'input-lg' } %>
+              <%= f.button :submit, "Log in", class: 'btn-lg btn-info btn-block' %>
+            </div>
+          <% end %>
+        </div>
+      </div>

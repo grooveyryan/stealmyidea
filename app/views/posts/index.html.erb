@@ -1,0 +1,7 @@
+<div class="category-name">
+  <h2 class="category-header">Category Name</h2>
+</div>
+
+<% @posts.each do |post| %>
+  <%= render 'post', post: post %>
+<% end %>

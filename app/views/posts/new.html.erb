@@ -1,0 +1,19 @@
+<div class="panel idea">
+  <h2>Share Your Idea</h2>
+  <%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class="select">
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category") %>
+  </div>
+    <div class="form-group">
+      <%= f.input :title, placeholder:"Is title even neccessary?" %>
+    </div>
+    <div class="form-group">
+
+        <%= f.input :content, placeholder: "What's the big idea.....?" %>
+
+    </div>
+    <div class="form-group">
+      <%= f.button :submit, "Share Idea", class: 'btn-success' %>
+    </div>
+  <% end %>
+</div>

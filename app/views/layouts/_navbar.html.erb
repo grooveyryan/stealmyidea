@@ -1,0 +1,29 @@
+<header class="header">
+  <nav>
+    <input type="checkbox" id="mobile-menu" class="mobile-menu-check">
+    <label for="mobile-menu" class="show-mobile-menu">Menu</label>
+    <ul class="header-nav nav-links">
+      <li><%= link_to 'Home', root_path %></li>
+      <li class="dropdown">
+        <a class="drop-trigger" href="#">Categories</a>
+        <ul class="drop-menu">
+          <% Category.all.each do |category| %>
+            <li>
+              <%= link_to category.name, posts_path(category: category.name), class: "link" %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Share Idea', new_post_path %></li>
+        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+
+      <% else %>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+
+        <li><%= link_to 'Log in', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+</header>

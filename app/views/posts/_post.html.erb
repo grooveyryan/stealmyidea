@@ -1,0 +1,51 @@
+<div class="posts-wrapper ">
+
+
+    <div class="post">
+      <div class="post-head">
+        <div class="title">
+          <h2><%= post.title %></h2>
+          <h4 class="username"><%= post.user.user_name %>'s idea</h4>
+        </div>
+      </div>
+      <p class="idea-content">
+        <%= post.content %>
+      </p>
+      <div class="post-bottom">
+        <div class="caption">
+          <div class="user-name">
+            <h2>Comments</h2>
+          </div>
+        </div>
+        <% if post.comments %>
+          <% post.comments.each do |comment| %>
+          <div class="comment">
+            <div class="user-name">
+          <%= comment.user.user_name %>
+            </div>
+            <div class="comment-content">
+              <%= comment.thoughts %>
+            </div>
+              <% if comment.user == current_user %>
+              <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <span class="glyphicon glyphicon-remove delete-comment"></span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="comment-like-form">
+  <div class="like-button">
+    <span class="glyphicon glyphicon-heart-empty"></span>
+  </div>
+  <div class="comment-form">
+    <%= form_for [post, post.comments.new] do |f| %>
+      <%= f.text_field :thoughts, placeholder: 'Add a comment...' %>
+    <% end %>
+  </div>
+</div>
+
+      </div>
+
+</div>
